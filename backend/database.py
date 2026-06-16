@@ -1,7 +1,12 @@
+import os
+#from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = (
+#load_dotenv()
+
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
     "postgresql://postgres:Ankita%40491@localhost:5432/securescan_ai"
 )
 
