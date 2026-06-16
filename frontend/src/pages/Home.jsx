@@ -98,7 +98,7 @@ useEffect(() => {
   try {
 
     const response = await fetch(
-      "http://127.0.0.1:8000/scan",
+      "https://securescanai-backend.onrender.com/scan",
       {
         method: "POST",
         body: formData,
@@ -177,7 +177,7 @@ async function downloadReport() {
 
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/generate-report",
+      "https://securescanai-backend.onrender.com/generate-report",
       {
         method: "POST",
         headers: {
@@ -190,8 +190,7 @@ async function downloadReport() {
     const data = await response.json()
     saveReportToDatabase(data.report_file)
     
-    const downloadUrl = `http://127.0.0.1:8000/download-report/${data.report_file}`
-
+    const downloadUrl =`https://securescanai-backend.onrender.com/download-report/${data.report_file}`
     window.open(downloadUrl, "_blank")
   } catch (error) {
     console.log(error)
@@ -207,8 +206,8 @@ async function handleAuth() {
 
   const endpoint =
     authMode === "login"
-      ? "http://127.0.0.1:8000/auth/login"
-      : "http://127.0.0.1:8000/auth/signup"
+      ? "https://securescanai-backend.onrender.com/auth/login"
+      : "https://securescanai-backend.onrender.com/auth/signup"
 
   try {
     const response = await fetch(endpoint, {
@@ -295,7 +294,7 @@ if (!isLoggedIn) {
 
 async function saveScanHistoryToDatabase(scanResult) {
   try {
-    await fetch("http://127.0.0.1:8000/save-scan-history", {
+    await fetch("https://securescanai-backend.onrender.com/save-scan-history", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -315,7 +314,7 @@ async function saveScanHistoryToDatabase(scanResult) {
 
 async function saveReportToDatabase(reportName) {
   try {
-    await fetch("http://127.0.0.1:8000/save-report", {
+    await fetch("https://securescanai-backend.onrender.com/save-report", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -335,7 +334,7 @@ async function fetchDashboardStats(emailValue) {
 
   try {
     const response = await fetch(
-      `http://127.0.0.1:8000/dashboard-stats/${emailValue}`
+      `https://securescanai-backend.onrender.com/dashboard-stats/${emailValue}`
     )
 
     const data = await response.json()
